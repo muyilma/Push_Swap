@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include "push_swap.h"
 
 int	ft_strcmp(char *s1, char *s2)
 {
@@ -14,39 +15,35 @@ int	ft_strcmp(char *s1, char *s2)
 
 int	ft_atoi(const char *str)
 {
-	int	i;
-	int	val;
-	int	a;
+	long	result;
+	long	sign;
 
-	i = 0;
-	val = 0;
-	a = 1;
-	while ((str[i] >= 9 && str[i] <= 13) || str[i] == ' ')
+	result = 0;
+	sign = 1;
+	while (*str == ' ' || (*str >= 9 && *str <= 13))
+		str++;
+	if (*str == '-')
+		sign = -1;
+	if (*str == '-' || *str == '+')
+		str++;
+	while (*str >= '0' && *str <= '9')
 	{
-		i++;
+		result = result * 10 + *str - '0';
+		str++;
 	}
-	if (str[i] == '-')
-	{
-		a *= -1;
-		i++;
-	}
-	else if (str[i] == '+')
-		i++;
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		val = (str[i] - 48) + (10 * val);
-		i++;
-	}
-	return (val * a);
+	result=sign*result;
+	if (!(result >= -2147483648 && result <= 2147483647))
+		ft_error();
+	int n = result;
+	return (n);
 }
-
 
 void	*ft_calloc(size_t count, size_t size)
 {
-	int				*a;
-	size_t			len;
-	size_t			i;
-	unsigned char	*s;
+	int *a;
+	size_t len;
+	size_t i;
+	unsigned char *s;
 
 	len = count * size;
 	i = 0;
