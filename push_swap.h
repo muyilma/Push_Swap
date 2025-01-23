@@ -15,8 +15,9 @@ typedef struct s_general
 void				swap_op(t_general *gen, char *op, int print);
 t_list				*front_add(t_list **lst, int content);
 int					ft_strcmp(char *s1, char *s2);
-int					ft_atoi(const char *str);
+int					ft_atoi(const char *str, char **av);
 char				**ft_split(char const *s, char c);
 void				*ft_calloc(size_t count, size_t size);
 void				control(int ac, char **av);
-void				ft_error(void);
+void				ft_error(char **av, int sp);
+void				ft_error2(char **av, int sp);

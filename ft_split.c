@@ -77,8 +77,8 @@ char	**ft_split(char const *s, char c)
 	size_t		count;
 	const char	*begin;
 
-	count = 0;
-	list = (char **)malloc(sizeof(char *) * (count_word(s, c) + 1));
+	count = 1;
+	list = (char **)malloc(sizeof(char *) * (count_word(s, c) + 2));
 	if (!list)
 		return (NULL);
 	while (*s)

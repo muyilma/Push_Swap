@@ -20,6 +20,27 @@ t_list	*front_add(t_list **lst, int content)
 	}
 	return (*lst);
 }
+t_list	*back_add(t_list **lst, int content)
+{
+	t_list	*newstr;
+
+	newstr = *lst;
+	if (!*lst)
+	{
+		*lst = malloc(sizeof(t_list));
+		newstr = malloc(sizeof(t_list));
+		newstr->data = content;
+		*lst = newstr;
+	}
+	else
+	{
+		while (newstr->next != NULL)
+			newstr = newstr->next;
+		newstr->next = malloc(sizeof(t_list));
+		newstr->next->data = content;
+	}
+	return (*lst);
+}
 
 void	print(t_list *a)
 {
@@ -30,42 +51,32 @@ void	print(t_list *a)
 	}
 }
 
-// t_general	*stackadd(int ac, char **av)
-// {
-// 	t_general	*gen;
-// 	int			i;
-// 	int			j;
-// 	char		**str;
+t_general	*stackadd(int ac, char **av)
+{
+	t_general	*gen;
+	int			i;
 
-// 	gen = malloc(sizeof(t_general));
-// 	i = 0;
-// 	j = -1;
-// 	if (ac == 2)
-// 	{
-// 		str = ft_split(av[1], ' ');
-// 		ac = 0;
-// 		while (str[++j])
-// 			ac++;
-// 		if (ac > 1)
-// 		{
-// 			j = -1;
-// 			while (str[++j])
-// 				gen->a = front_add(&gen->a, ft_atoi(str[j]));
-// 		}
-// 	}
-// 	else if (ac > 2)
-// 		while (av[++i])
-// 			gen->a = front_add(&gen->a, ft_atoi(av[i]));
-// 	return (gen);
-// }
+	gen = malloc(sizeof(t_general));
+	i = 0;
+	if (ac == 2)
+	{
+		av = ft_split(av[1], ' ');
+		av[0] = "0";
+	}
+	if (av[2] != NULL)
+	{
+		while (av[++i])
+			gen->a = back_add(&gen->a, ft_atoi(av[i], av));
+	}
+	return (gen);
+}
 
 int	main(int ac, char **av)
 {
-	
-
 	t_general	*gen;
-	control(ac,av);
-	//gen = stackadd(ac, av);
-	//print(gen->a);
+
+	control(ac, av);
+	gen = stackadd(ac, av);
 	
+	print(gen->a);
 }

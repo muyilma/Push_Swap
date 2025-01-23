@@ -13,7 +13,7 @@ int	ft_strcmp(char *s1, char *s2)
 	return (s1[i] - s2[i]);
 }
 
-int	ft_atoi(const char *str)
+int	ft_atoi(const char *str,char **av)
 {
 	long	result;
 	long	sign;
@@ -33,7 +33,7 @@ int	ft_atoi(const char *str)
 	}
 	result=sign*result;
 	if (!(result >= -2147483648 && result <= 2147483647))
-		ft_error();
+		ft_error(av,0);//burada leak var
 	int n = result;
 	return (n);
 }
