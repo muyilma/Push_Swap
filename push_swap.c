@@ -6,11 +6,11 @@ t_list	*front_add(t_list **lst, int content)
 {
 	t_list	*newstr;
 
-	newstr = malloc(sizeof(size_t));
+	newstr = malloc(sizeof(t_list));
 	newstr->data = content;
+	newstr->next =NULL ;
 	if (!*lst)
 	{
-		*lst = malloc(sizeof(t_list));
 		*lst = newstr;
 	}
 	else
@@ -20,26 +20,27 @@ t_list	*front_add(t_list **lst, int content)
 	}
 	return (*lst);
 }
-t_list	*back_add(t_list **lst, int content)
-{
-	t_list	*newstr;
 
-	newstr = *lst;
-	if (!*lst)
+t_list	*back_add(t_list *lst, int content)
+{
+	t_list	*newlst;
+
+	newlst = lst;
+	if (!lst)
 	{
-		*lst = malloc(sizeof(t_list));
-		newstr = malloc(sizeof(t_list));
-		newstr->data = content;
-		*lst = newstr;
+		lst = malloc(sizeof(t_list));
+		lst->data = content;
+		lst->next = NULL;
 	}
 	else
 	{
-		while (newstr->next != NULL)
-			newstr = newstr->next;
-		newstr->next = malloc(sizeof(t_list));
-		newstr->next->data = content;
+		while (newlst->next != NULL)
+			newlst = newlst->next;
+		newlst->next = malloc(sizeof(t_list));
+		newlst->next->data = content;
+		newlst->next->next = NULL;
 	}
-	return (*lst);
+	return (lst);
 }
 
 void	print(t_list *a)
@@ -51,24 +52,57 @@ void	print(t_list *a)
 	}
 }
 
-t_general	*stackadd(int ac, char **av)
+t_general	*stackadd(int ac, char **av, t_general *gen)
 {
-	t_general	*gen;
-	int			i;
+	int	i;
+	int	sp;
 
-	gen = malloc(sizeof(t_general));
 	i = 0;
+	sp = 0;
 	if (ac == 2)
 	{
 		av = ft_split(av[1], ' ');
 		av[0] = "0";
+		sp++;
 	}
 	if (av[2] != NULL)
 	{
 		while (av[++i])
-			gen->a = back_add(&gen->a, ft_atoi(av[i], av));
+			gen->a = back_add(gen->a, ft_atoi(av[i], av));
 	}
+	i = 0;
+	while (av[++i] && sp == 1)
+		free(av[i]);
+	if (sp == 1)
+		free(av);
 	return (gen);
+}
+
+void	allfree(t_general *gen)
+{
+	t_list	*temp;
+
+	temp = gen->a;
+	if (temp)
+	{
+		while (temp)
+		{
+			temp = temp->next;
+			free(gen->a);
+			gen->a = temp;
+		}
+	}
+	temp = gen->b;
+	if (temp)
+	{
+		while (temp)
+		{
+			temp = temp->next;
+			free(gen->b);
+			gen->b = temp;
+		}
+	}
+	free(gen);
 }
 
 int	main(int ac, char **av)
@@ -76,7 +110,12 @@ int	main(int ac, char **av)
 	t_general	*gen;
 
 	control(ac, av);
-	gen = stackadd(ac, av);
-	
+	gen = malloc(sizeof(t_general));
+	gen->a = NULL;
+	gen->b = NULL;
+	gen = stackadd(ac, av, gen);
+	sorting(gen);
+	//swap_op(gen,"ra",1);
 	print(gen->a);
+	allfree(gen);
 }

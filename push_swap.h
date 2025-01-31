@@ -10,14 +10,19 @@ typedef struct s_general
 	t_list			*b;
 }					t_general;
 
+#include "libft/libft.h"
 #include <stddef.h>
 
 void				swap_op(t_general *gen, char *op, int print);
 t_list				*front_add(t_list **lst, int content);
-int					ft_strcmp(char *s1, char *s2);
 int					ft_atoi(const char *str, char **av);
 char				**ft_split(char const *s, char c);
-void				*ft_calloc(size_t count, size_t size);
 void				control(int ac, char **av);
 void				ft_error(char **av, int sp);
 void				ft_error2(char **av, int sp);
+void				sorting(t_general *gen);
+void				allfree(t_general *gen);
+
+// REMOVE
+
+void				print(t_list *a);

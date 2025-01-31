@@ -22,10 +22,12 @@ int	ft_atoi2(const char *str, char **av, int sp)
 	{
 		result = result * 10 + *str - '0';
 		str++;
+		if (!(result >= -2147483648 && result <= 2147483647))
+			ft_error(av, sp);
 	}
 	result = sign * result;
 	if (!(result >= -2147483648 && result <= 2147483647))
-		ft_error(av, sp); // burada leak var
+		ft_error(av, sp);
 	n = result;
 	return (n);
 }
@@ -113,4 +115,9 @@ void	control(int ac, char **av)
 		}
 	}
 	sort(av, sp);
+	j = 0;
+	while (av[++j] && sp == 1)
+		free(av[j]);
+	if (sp == 1)
+		free(av);
 }
