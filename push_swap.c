@@ -88,6 +88,7 @@ void	allfree(t_general *gen)
 		while (temp)
 		{
 			temp = temp->next;
+			
 			free(gen->a);
 			gen->a = temp;
 		}
@@ -115,7 +116,6 @@ int	main(int ac, char **av)
 	gen->b = NULL;
 	gen = stackadd(ac, av, gen);
 	sorting(gen);
-	//swap_op(gen,"ra",1);
 	print(gen->a);
 	allfree(gen);
 }

@@ -22,6 +22,8 @@ void				ft_error(char **av, int sp);
 void				ft_error2(char **av, int sp);
 void				sorting(t_general *gen);
 void				allfree(t_general *gen);
+void				turkishalgo(t_general *gen);
+int					stacklen(t_list *lst);
 
 // REMOVE
 

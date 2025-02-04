@@ -13,7 +13,6 @@ int	stacklen(t_list *lst)
 	}
 	return (i);
 }
-
 int	check(t_general *gen)
 {
 	t_list	*lst;
@@ -37,13 +36,20 @@ void	three(t_general *gen)
 	{
 		if (check(gen) == 1)
 			break ;
+		else if (lst->data > lst->next->next->data)
+			swap_op(gen, "ra", 1);
+		lst = gen->a;
+		if (check(gen) == 1)
+			break ;
+		else if (lst->data > lst->next->next->data)
+			swap_op(gen, "ra", 1);
+		if (check(gen) == 1)
+			break ;
 		else if (lst->data > lst->next->data)
 			swap_op(gen, "sa", 1);
 		if (check(gen) == 1)
 			break ;
 		swap_op(gen, "rra", 1);
-		if (check(gen) == 1)
-			break ;
 		lst = gen->a;
 	}
 }
@@ -125,4 +131,6 @@ void	sorting(t_general *gen)
 		three(gen);
 	else if (len == 4)
 		four(gen);
+	else if (len > 4)
+		turkishalgo(gen);
 }

@@ -1,6 +1,6 @@
 NAME=push_swap
 
-SRCS= control.c error.c push_swap.c sorting.c swap_op.c
+SRCS= control.c error.c push_swap.c sorting.c swap_op.c turkishalgo.c
 
 LIBFT=libft/libft.a
 
@@ -15,10 +15,12 @@ $(NAME): $(SRCS)
 	cc  -g -o $(NAME)  $(CFLAGS) $(SRCS)  $(LIBFT) 
 
 clean:
-	$(RM) $(OBJS)
+	make clean -C ./libft -s
+	
 
 fclean: clean
-	$(RM) $(NAME)
+	make fclean -C ./libft -s
+	rm -rf $(NAME)
 
 re: fclean all
 
