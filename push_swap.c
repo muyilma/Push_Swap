@@ -8,7 +8,7 @@ t_list	*front_add(t_list **lst, int content)
 
 	newstr = malloc(sizeof(t_list));
 	newstr->data = content;
-	newstr->next =NULL ;
+	newstr->next = NULL;
 	if (!*lst)
 	{
 		*lst = newstr;
@@ -88,7 +88,6 @@ void	allfree(t_general *gen)
 		while (temp)
 		{
 			temp = temp->next;
-			
 			free(gen->a);
 			gen->a = temp;
 		}
@@ -116,6 +115,7 @@ int	main(int ac, char **av)
 	gen->b = NULL;
 	gen = stackadd(ac, av, gen);
 	sorting(gen);
+	//swap_op(gen,"ra",1);
 	print(gen->a);
 	allfree(gen);
 }

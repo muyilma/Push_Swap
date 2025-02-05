@@ -42,16 +42,15 @@ void	rotate(t_list **a, char *op, int p)
 	t_list	*head;
 	t_list	*last;
 
-	last = *a;
-	last = last->next;
+	if (*a == NULL || (*a)->next == NULL)
+		return ;
 	head = *a;
-	temp = *a;
-	while (temp->next != NULL)
-		temp = temp->next;
-	temp->next = head;
+	last = *a;
+	while (last->next != NULL)
+		last = last->next;
+	*a = head->next;
 	head->next = NULL;
-	head = last;
-	*a = head;
+	last->next = head;
 	if (p == 1)
 	{
 		write(1, op, 2);
@@ -92,13 +91,6 @@ void	swap_op(t_general *gen, char *op, int print)
 {
 	if (ft_strcmp(op, "sa") == 0)
 		swap(gen->a, op, print);
-	else if (ft_strcmp(op, "sb") == 0)
-		swap(gen->b, op, print);
-	else if (ft_strcmp(op, "ss") == 0)
-	{
-		swap(gen->a, op, print);
-		swap(gen->b, op, print);
-	}
 	else if (ft_strcmp(op, "pb") == 0)
 		push(&gen->a, &gen->b, op, print);
 	else if (ft_strcmp(op, "pa") == 0)
@@ -107,8 +99,18 @@ void	swap_op(t_general *gen, char *op, int print)
 		rotate(&gen->a, op, print);
 	else if (ft_strcmp(op, "rb") == 0)
 		rotate(&gen->b, op, print);
+	else if (ft_strcmp(op, "rr") == 0)
+	{
+		rotate(&gen->b, op, print);
+		rotate(&gen->a, op, 0);
+	}
 	else if (ft_strcmp(op, "rra") == 0)
 		r_rotate(&gen->a, op, print);
 	else if (ft_strcmp(op, "rrb") == 0)
 		r_rotate(&gen->b, op, print);
+	else if (ft_strcmp(op, "rrr") == 0)
+	{
+		r_rotate(&gen->b, op, print);
+		r_rotate(&gen->a, op, 0);
+	}
 }

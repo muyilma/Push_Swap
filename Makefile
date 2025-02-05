@@ -4,7 +4,7 @@ SRCS= control.c error.c push_swap.c sorting.c swap_op.c turkishalgo.c
 
 LIBFT=libft/libft.a
 
-CFLAGS= -Wall -Werror -Wextra
+CFLAGS= 
 CC = cc
 
 all: $(NAME)

@@ -26,5 +26,5 @@ void				turkishalgo(t_general *gen);
 int					stacklen(t_list *lst);
 
 // REMOVE
-
+t_list				*back_add(t_list *lst, int content);
 void				print(t_list *a);
