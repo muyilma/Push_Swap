@@ -1,29 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_checker.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: musyilma <musyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/09 11:13:45 by musyilma          #+#    #+#             */
-/*   Updated: 2025/02/10 17:48:18 by musyilma         ###   ########.fr       */
+/*   Created: 2025/02/10 17:01:13 by musyilma          #+#    #+#             */
+/*   Updated: 2025/02/10 17:01:14 by musyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-#include <stdlib.h>
+#ifndef FT_CHECKER_H
+# define FT_CHECKER_H
 
-int	main(int ac, char **av)
-{
-	t_general	*gen;
+# include "libft/libft.h"
+# include "push_swap.h"
 
-	control(ac, av, 0, 0);
-	gen = malloc(sizeof(t_general));
-	if (gen == NULL)
-		return (0);
-	gen->a = NULL;
-	gen->b = NULL;
-	gen = stackadd(ac, av, gen);
-	sorting(gen);
-	allfree(gen);
-}
+#endif

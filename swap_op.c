@@ -1,5 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   swap_op.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: musyilma <musyilma@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/09 11:19:41 by musyilma          #+#    #+#             */
+/*   Updated: 2025/02/10 17:12:24 by musyilma         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft/libft.h"
 #include "push_swap.h"
-#include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 
@@ -24,6 +36,8 @@ void	push(t_list **a, t_list **b, char *op, int p)
 {
 	t_list	*temp;
 
+	if ((*a) == NULL)
+		return ;
 	temp = *a;
 	*b = front_add(b, temp->data);
 	temp = temp->next;
@@ -38,7 +52,6 @@ void	push(t_list **a, t_list **b, char *op, int p)
 
 void	rotate(t_list **a, char *op, int p)
 {
-	t_list	*temp;
 	t_list	*head;
 	t_list	*last;
 
@@ -61,25 +74,20 @@ void	rotate(t_list **a, char *op, int p)
 void	r_rotate(t_list **a, char *op, int p)
 {
 	t_list	*temp;
-	t_list	*head;
 	t_list	*last;
 
+	if (*a == NULL || (*a)->next == NULL)
+		return ;
 	temp = *a;
-	head = *a;
-	last = NULL;
-	while (temp->next != NULL)
-	{
-		if (temp->next->next == NULL)
-		{
-			last = temp->next;
-			temp->next = NULL;
-			break ;
-		}
+	while (temp->next)
 		temp = temp->next;
-	}
-	last->next = head;
-	head = last;
-	*a = head;
+	last = temp;
+	temp = *a;
+	while (temp->next != last)
+		temp = temp->next;
+	temp->next = NULL;
+	last->next = *a;
+	*a = last;
 	if (p == 1)
 	{
 		write(1, op, 3);

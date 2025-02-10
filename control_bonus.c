@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   control.c                                          :+:      :+:    :+:   */
+/*   control_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: musyilma <musyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 11:01:52 by musyilma          #+#    #+#             */
-/*   Updated: 2025/02/10 19:09:02 by musyilma         ###   ########.fr       */
+/*   Updated: 2025/02/10 18:57:02 by musyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,31 +103,21 @@ void	sort(char **av, int sp)
 		i++;
 	}
 	if (k == 0)
-		ft_error2(av, sp);
+		ft_error3(av, sp);
 }
 
-void	control(int ac, char **av, int i, int sp)
+void	control_bonus(int ac, char **av, int i, int sp)
 {
-	if (ac == 2)
+	if (ac >= 2)
 	{
-		av = ft_split(av[1], ' ');
-		av[0] = "0";
-		sp++;
-		if (av == NULL)
-			ft_error2(av, sp);
-	}
-	while (av[i])
-	{
-		while (av[++i])
+		while (av[i])
 		{
-			ft_digit(av[i], av, sp);
-			repeat(av + 1, av[i], sp);
+			while (av[++i])
+			{
+				ft_digit(av[i], av, sp);
+				repeat(av + 1, av[i], sp);
+			}
 		}
+		sort(av, sp);
 	}
-	sort(av, sp);
-	i = 0;
-	while (av[++i] && sp == 1)
-		free(av[i]);
-	if (sp == 1)
-		free(av);
 }

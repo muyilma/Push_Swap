@@ -1,128 +1,96 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   turkishalgo.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: musyilma <musyilma@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/08 11:41:27 by musyilma          #+#    #+#             */
+/*   Updated: 2025/02/10 10:18:54 by musyilma         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
-#include <stdio.h>
-#include <stdlib.h>
+#include <unistd.h>
 
-t_general	*listcopy(t_general *gen)
+int	max(t_general *gen)
 {
-	t_general	*cpygen;
-	t_list		*a;
-	t_list		*b;
+	t_list	*i;
+	t_list	*j;
+	int		number;
 
-	a = gen->a;
-	b = gen->b;
-	cpygen = malloc(sizeof(t_general));
-	cpygen->a = NULL;
-	cpygen->b = NULL;
-	while (a != NULL)
+	i = gen->b;
+	while (i)
 	{
-		cpygen->a = back_add(cpygen->a, a->data);
-		a = a->next;
-	}
-	while (b != NULL)
-	{
-		cpygen->b = back_add(cpygen->b, b->data);
-		b = b->next;
-	}
-	return (cpygen);
-}
-int	functionNumberFindB(int number, t_list *b, int min)
-{
-	int	smallnumber;
-	int	bignumber;
-
-	smallnumber = -2147483648;
-	bignumber = -2147483648;
-	while (b != NULL)
-	{
-		if (number > b->data)
+		j = gen->b;
+		while (j)
 		{
-			if (smallnumber < b->data)
+			if (i->data < j->data)
+				break ;
+			j = j->next;
+			if (!j)
 			{
-				smallnumber = b->data;
-				min++;
+				number = i->data;
+				return (number);
 			}
 		}
-		else
-		{
-			if (bignumber < b->data)
-				bignumber = b->data;
-		}
-		b = b->next;
+		i = i->next;
 	}
-	if (min > 0)
-		return (smallnumber);
-	return (bignumber);
+	number = i->data;
+	return (number);
 }
 
-int	funtionNumberUp(t_general *gen, int numberb, int numbera, int indexa)
+int	min(t_general *gen)
 {
-	t_general	*cpygen;
-	int			indexb;
-	int			len;
-
-	cpygen = listcopy(gen);
-	indexb = 1;
-	// printf("%d %d\n",stacklen(gen->a),stacklen(gen->a)/2);
-	while (cpygen->b->data != numberb)
-	{
-		indexb++;
-		cpygen->b = cpygen->b->next;
-	}
-	if (!(stacklen(gen->a) % 2 == 0))
-		indexa--;
-	while (gen->a != numbera || gen->b != numberb)
-	{
-		if (gen->a)
-	}
-	if (stacklen(gen->a) / 2 < indexa)
-	{
-		while (gen->a->data != numbera)
-		{
-			swap_op(gen, "rra", 1);
-		}
-		gen->a = cpygen->a;
-	}
-	else
-	{
-		while (gen->a->data != numbera)
-		{
-			swap_op(gen, "ra", 1);
-		}
-		gen->a = cpygen->a;
-	}
-	return (1);
-}
-
-int	functionIndexPush(t_general *gen)
-{
+	t_list	*i;
+	t_list	*j;
 	int		number;
-	int		index;
-	int		i;
-	t_list	*a;
 
-	index = 1;
-	gen = listcopy(gen);
-	a = gen->a;
-	while (a != NULL)
+	i = gen->a;
+	while (i)
 	{
-		number = functionNumberFindB(a->data, gen->b, 0);
-		i += funtionNumberUp(gen, number, a->data, index);
-		index++;
-		i = 0;
-		a = a->next;
+		j = gen->a;
+		while (j)
+		{
+			if (i->data > j->data)
+				break ;
+			j = j->next;
+			if (!j)
+			{
+				number = i->data;
+				return (number);
+			}
+		}
+		i = i->next;
 	}
-	allfree(gen);
-	return (1);
+	number = i->data;
+	return (number);
 }
 
 void	turkishalgo(t_general *gen)
 {
 	int	len;
-	int	indexpush;
+	int	numberb;
+	int	numbera;
 
-	len = stacklen(gen->a);
 	swap_op(gen, "pb", 1);
+	len = sl(gen->a);
 	if (len > 3)
 		swap_op(gen, "pb", 1);
-	indexpush = functionIndexPush(gen);
+	while (sl(gen->a) > 3)
+	{
+		numbera = functionindexpush(gen, 0);
+		numberb = functionnumberfindb(numbera, gen->b, 0);
+		funtionpush(gen, numberb, numbera, 1);
+	}
+	three(gen);
+	numbera = functionindexpush(gen, 0);
+	funtionpush(gen, max(gen), numbera, 0);
+	while (gen->b != NULL)
+	{
+		numbera = functionnumberfinda(gen->b->data, gen->a, 0);
+		funtionpush(gen, gen->b->data, numbera, 2);
+	}
+	while (min(gen) != gen->a->data)
+		swap_op(gen, "rra", 1);
 }
