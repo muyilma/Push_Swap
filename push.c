@@ -6,14 +6,14 @@
 /*   By: musyilma <musyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 15:13:59 by musyilma          #+#    #+#             */
-/*   Updated: 2025/02/10 10:18:36 by musyilma         ###   ########.fr       */
+/*   Updated: 2025/02/11 09:53:53 by musyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "push_swap.h"
 
-void	functionop(t_general *gen, t_list *list, int index, char *op)
+static void	functionop(t_general *gen, t_list *list, int index, char *op)
 {
 	char	*r;
 	char	*rr;
@@ -34,7 +34,7 @@ void	functionop(t_general *gen, t_list *list, int index, char *op)
 		swap_op(gen, rr, 1);
 }
 
-void	pusher(t_general *gen, int push)
+static void	pusher(t_general *gen, int push)
 {
 	if (push == 1)
 		swap_op(gen, "pb", 1);

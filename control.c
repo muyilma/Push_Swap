@@ -6,7 +6,7 @@
 /*   By: musyilma <musyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 11:01:52 by musyilma          #+#    #+#             */
-/*   Updated: 2025/02/10 19:09:02 by musyilma         ###   ########.fr       */
+/*   Updated: 2025/02/11 13:00:34 by musyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "push_swap.h"
 #include <stdlib.h>
 
-int	ft_atoi2(const char *str, char **av, int sp)
+static int	ft_atoi2(const char *str, char **av, int sp)
 {
 	long	result;
 	long	sign;
@@ -42,7 +42,7 @@ int	ft_atoi2(const char *str, char **av, int sp)
 	return (n);
 }
 
-void	ft_digit(char *str, char **av, int sp)
+static void	ft_digit(char *str, char **av, int sp)
 {
 	int	i;
 
@@ -61,7 +61,7 @@ void	ft_digit(char *str, char **av, int sp)
 	}
 }
 
-void	repeat(char **av, char *ac, int sp)
+static void	repeat(char **av, char *ac, int sp)
 {
 	int	i;
 	int	j;
@@ -78,7 +78,7 @@ void	repeat(char **av, char *ac, int sp)
 	}
 }
 
-void	sort(char **av, int sp)
+static void	sort(char **av, int sp)
 {
 	int	i;
 	int	j;

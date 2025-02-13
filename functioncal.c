@@ -6,7 +6,7 @@
 /*   By: musyilma <musyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 15:20:18 by musyilma          #+#    #+#             */
-/*   Updated: 2025/02/10 11:07:43 by musyilma         ###   ########.fr       */
+/*   Updated: 2025/02/11 19:29:59 by musyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	functionindex(t_list *b, int number)
 	return (i);
 }
 
-int	functionmove(int i, int j)
+static int	functionmove(int i, int j)
 {
 	if (i >= 0 && j >= 0)
 	{
@@ -52,7 +52,7 @@ int	functionmove(int i, int j)
 	return (i);
 }
 
-int	funtionnumberup(t_general *gen, int numberb, int indexa)
+static int	funtionnumberup(t_general *gen, int numberb, int indexa)
 {
 	int	indexb;
 	int	a;

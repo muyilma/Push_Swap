@@ -6,14 +6,14 @@
 /*   By: musyilma <musyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 11:41:27 by musyilma          #+#    #+#             */
-/*   Updated: 2025/02/10 10:18:54 by musyilma         ###   ########.fr       */
+/*   Updated: 2025/02/11 13:45:44 by musyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <unistd.h>
 
-int	max(t_general *gen)
+static int	max(t_general *gen)
 {
 	t_list	*i;
 	t_list	*j;
@@ -40,7 +40,7 @@ int	max(t_general *gen)
 	return (number);
 }
 
-int	min(t_general *gen)
+static int	min(t_general *gen)
 {
 	t_list	*i;
 	t_list	*j;

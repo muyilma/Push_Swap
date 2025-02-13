@@ -6,7 +6,7 @@
 /*   By: musyilma <musyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 11:18:35 by musyilma          #+#    #+#             */
-/*   Updated: 2025/02/09 19:15:42 by musyilma         ###   ########.fr       */
+/*   Updated: 2025/02/11 19:10:14 by musyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	sl(t_list *lst)
 	return (i);
 }
 
-int	check(t_general *gen)
+static int	check(t_general *gen)
 {
 	t_list	*lst;
 

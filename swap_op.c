@@ -6,7 +6,7 @@
 /*   By: musyilma <musyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 11:19:41 by musyilma          #+#    #+#             */
-/*   Updated: 2025/02/10 17:12:24 by musyilma         ###   ########.fr       */
+/*   Updated: 2025/02/11 09:52:55 by musyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-void	swap(t_list *gen, char *op, int p)
+static void	swap(t_list *gen, char *op, int p)
 {
 	int	swap;
 
@@ -32,7 +32,7 @@ void	swap(t_list *gen, char *op, int p)
 	}
 }
 
-void	push(t_list **a, t_list **b, char *op, int p)
+static void	push(t_list **a, t_list **b, char *op, int p)
 {
 	t_list	*temp;
 
@@ -50,7 +50,7 @@ void	push(t_list **a, t_list **b, char *op, int p)
 	}
 }
 
-void	rotate(t_list **a, char *op, int p)
+static void	rotate(t_list **a, char *op, int p)
 {
 	t_list	*head;
 	t_list	*last;
@@ -71,7 +71,7 @@ void	rotate(t_list **a, char *op, int p)
 	}
 }
 
-void	r_rotate(t_list **a, char *op, int p)
+static void	r_rotate(t_list **a, char *op, int p)
 {
 	t_list	*temp;
 	t_list	*last;
