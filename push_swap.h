@@ -6,7 +6,7 @@
 /*   By: musyilma <musyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 11:16:36 by musyilma          #+#    #+#             */
-/*   Updated: 2025/02/11 20:01:48 by musyilma         ###   ########.fr       */
+/*   Updated: 2025/02/11 13:22:03 by musyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ int					sl(t_list *lst);
 int					functionindexpush(t_general *gen, int minIndex);
 int					functionindex(t_list *b, int number);
 int					functionnumberfindb(int number, t_list *b, int min);
-void				funtionpush(t_general *gen, int numberb, int numbera,int push);
+void				funtionpush(t_general *gen, int numberb, int numbera,
+						int push);
 void				three(t_general *gen);
 int					functionnumberfinda(int number, t_list *b, int min);
 
